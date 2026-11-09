@@ -10,6 +10,9 @@ function render(n:StudioNode,i:number):string{
   case "TextField":return `<TextInput accessibilityLabel={${quoted(n.accessibilityLabel||n.label)}} placeholder={${label}} style={${style}} />`;
   case "Switch":return `<Switch accessibilityLabel={${quoted(n.accessibilityLabel||n.label)}} value={states[${i}] ?? false} onValueChange={v=>setStates(s=>({...s,[${i}]:v}))} style={${style}} />`;
   case "Checkbox":return `<Pressable accessibilityRole="checkbox" accessibilityState={{checked:states[${i}]??false}} onPress={()=>setStates(s=>({...s,[${i}]:!s[${i}]}))} style={${style}}><Text>☑ {${label}}</Text></Pressable>`;
+  case "Audio":return `<Text style={${style}}>Audio player — native media integration required</Text>`;
+  case "Video":return `<Text style={${style}}>Video player — native media integration required</Text>`;
+  case "WebView":return `<Text style={${style}}>Web browser — native WebView integration required</Text>`;
   case "Card":case "Frame":case "Rectangle":return `<View style={${style}}><Text>{${label}}</Text></View>`;
  }
 }
