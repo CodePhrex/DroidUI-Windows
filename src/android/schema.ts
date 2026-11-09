@@ -9,6 +9,11 @@ export interface StudioNode {
   height?: number;
   fontSizeSp?: number;
   accessibilityLabel?: string;
+  backgroundColor?: string;
+  textColor?: string;
+  cornerRadius?: number;
+  opacity?: number;
+  rotation?: number;
 }
 export interface StudioDocument { name: string; nodes: StudioNode[] }
 export const STUDIO_SCHEMA_VERSION = 1;
@@ -24,6 +29,9 @@ export function isStudioDocument(value: unknown): value is StudioDocument {
     return typeof node.id==="string" && types.includes(String(node.type)) && typeof node.label==="string" &&
       typeof node.x==="number" && Number.isFinite(node.x) && typeof node.y==="number" && Number.isFinite(node.y) &&
       optionalNumber(node.width) && optionalNumber(node.height) && optionalNumber(node.fontSizeSp) &&
-      (node.accessibilityLabel===undefined || typeof node.accessibilityLabel==="string");
+      (node.accessibilityLabel===undefined || typeof node.accessibilityLabel==="string") &&
+      (node.backgroundColor===undefined || (typeof node.backgroundColor==="string" && /^#[0-9a-fA-F]{6}$/.test(node.backgroundColor))) &&
+      (node.textColor===undefined || (typeof node.textColor==="string" && /^#[0-9a-fA-F]{6}$/.test(node.textColor))) &&
+      optionalNumber(node.cornerRadius) && optionalNumber(node.opacity) && optionalNumber(node.rotation);
   });
 }
