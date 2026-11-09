@@ -7,7 +7,6 @@ Windows-first Tauri 2 + React/TypeScript desktop studio. This first scaffold sup
 Prerequisites: Node 20+, Rust stable, Windows C++ build tools, WebView2.
 
 ```bash
-cd desktop
 npm install
 npm run desktop
 ```
