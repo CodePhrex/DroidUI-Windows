@@ -19,6 +19,7 @@ const modifier = (node:StudioNode) => {
 function render(node:StudioNode, index:number):string {
   const m=modifier(node), label=kt(node.label);
   switch(node.type) {
+    case "Icon": return `Text(text = "✦", modifier = ${m}, fontSize = ${sp(node.fontSizeSp ?? 24)}) // TODO: replace with vector asset ${node.iconName ?? "sparkles"}`;
     case "Text": return `Text(text = ${label}, modifier = ${m}, fontSize = ${sp(node.fontSizeSp ?? 16)})`;
     case "Button": return `Button(onClick = { /* TODO: connect app action */ }, modifier = ${m}) { Text(${label}) }`;
     case "TextField": return `var field${index} by remember { mutableStateOf("") }
