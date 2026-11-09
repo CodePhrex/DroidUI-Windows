@@ -29,3 +29,20 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .element.checkbox{min-width:48px;min-height:48px;display:flex;align-items:center;justify-content:center;color:#355ba0}
 .element.checkbox:before{content:"☑";font-size:25px;margin-right:5px}
 .element.button{min-height:48px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:24px}
+
+/* Studio library, device presets, inspector */
+.component-search,.device-presets select{width:100%;background:#10141c;border:1px solid #354053;border-radius:7px;padding:9px;color:#e9edf7}
+.category-tabs{display:flex;gap:5px;overflow-x:auto;padding:10px 0;scrollbar-width:thin}
+.category-tabs button{width:auto;white-space:nowrap;padding:5px 8px;margin:0;font-size:11px}
+.component-group h4{font-size:11px;color:#8296b7;text-transform:uppercase;letter-spacing:1px;margin:14px 0 8px}
+.component-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.component-list button{min-width:0;min-height:76px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;font-size:12px;margin:0;padding:6px;position:relative}
+.component-symbol{font-size:24px;color:#8eb9ff}
+.add-symbol{position:absolute;top:4px;right:6px;color:#7c92b5}
+.device-presets{display:flex;align-items:center;gap:8px;font-size:12px}
+.device-presets select{width:230px;font-size:12px}
+.inspector input[type=color]{height:40px;padding:3px}
+.inspector input[type=range]{accent-color:#7eaaff;padding:0}
+.property-hint{font-size:12px;line-height:1.5;color:#a8b7ce}
+.canvasbar{max-width:none;align-items:center;gap:12px;flex-wrap:wrap}
+.canvas{flex-shrink:0}
