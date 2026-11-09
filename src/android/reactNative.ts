@@ -4,7 +4,7 @@ function render(n:StudioNode,i:number):string{
  const style=`{position:"absolute",left:${n.x},top:${n.y}${n.width===undefined?"":`,width:${n.width}`}${n.height===undefined?"":`,height:${n.height}`}}`;
  const label=quoted(n.label);
  switch(n.type){
-  case "Icon":return `<Text style={${style}}>✦</Text> /* TODO: replace with vector asset ${n.iconName??"sparkles"} */`;
+  case "Icon":return `<Text style={${style}}>✦</Text>`;
   case "Text":return `<Text style={${style}}>${"{"+label+"}"}</Text>`;
   case "Button":return `<Pressable accessibilityRole="button" accessibilityLabel={${quoted(n.accessibilityLabel||n.label)}} onPress={() => { /* TODO */ }} style={${style}}><Text>{${label}}</Text></Pressable>`;
   case "TextField":return `<TextInput accessibilityLabel={${quoted(n.accessibilityLabel||n.label)}} placeholder={${label}} style={${style}} />`;
