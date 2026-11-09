@@ -21,3 +21,11 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .canvas-stage:has(.is-preview){cursor:default}
 .element.rectangle{background:#7aa9e8;border:1px solid #4b7cc0;width:130px;height:84px;color:#162a45}
 .element.frame{background:#e5f0ff;border:2px dashed #5b8bc8;width:230px;height:180px;color:#32517a}
+
+/* Android-oriented Material 3 component previews. Canvas coordinates represent dp at baseline density. */
+.element.textfield{min-width:140px;background:#e7e9f1;color:#24304a;border-bottom:2px solid #576a94;border-radius:5px 5px 0 0}
+.element.switch{width:52px;min-height:32px;border-radius:18px;background:#6a8bc4;color:transparent}
+.element.switch:after{content:"";position:absolute;width:22px;height:22px;border-radius:50%;background:#fff;right:5px;top:4px}
+.element.checkbox{min-width:48px;min-height:48px;display:flex;align-items:center;justify-content:center;color:#355ba0}
+.element.checkbox:before{content:"☑";font-size:25px;margin-right:5px}
+.element.button{min-height:48px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:24px}
