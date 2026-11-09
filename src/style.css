@@ -139,3 +139,13 @@ footer{background:#11172a;border-color:#343a5c;gap:15px}
 @media(max-width:1450px){.brand-tagline{display:none}.actions{max-width:calc(100vw - 245px)}}
 @media(max-width:1100px){.workspace{grid-template-columns:54px 205px minmax(390px,1fr) 225px}.brand-copy small{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.brand svg{filter:none}}
+
+.screens-panel{padding:0 0 14px;margin-bottom:14px;border-bottom:1px solid #34405b}
+.screens-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.screens-heading button{width:32px;height:32px;display:flex;align-items:center;justify-content:center;padding:5px;margin:0;background:#453075;border-color:#8654c5}
+.screen-list{display:flex;flex-direction:column;gap:5px;max-height:180px;overflow:auto;margin:7px 0}
+.screen-list button{display:flex;align-items:center;gap:8px;margin:0;padding:9px;min-width:0}
+.screen-list button span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.screen-list button.active{border-color:#b16aff;background:#4b2d78!important}
+.screen-actions{display:flex;gap:7px}
+.screen-actions button{margin:0;flex:1;text-align:center;font-size:11px}
