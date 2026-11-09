@@ -5,6 +5,9 @@ function render(n:StudioNode,i:number):string{
  const label=quote(n.label);
  const go=n.navigateTo?`onNavigate(${quote(n.navigateTo)})`:"undefined";
  switch(n.type){
+ case "Audio":return `<Text style={${style}}>Audio player — native media integration required</Text>`;
+ case "Video":return `<Text style={${style}}>Video player — native media integration required</Text>`;
+ case "WebView":return `<Text style={${style}}>Web browser — install react-native-webview to enable</Text>`;
  case "Text":return `<Text style={${style}}>{${label}}</Text>`;
  case "Icon":return `<Text style={${style}} accessibilityLabel={${quote(n.accessibilityLabel||n.iconName||"icon")}}>✦</Text>`;
  case "Button":return `<Pressable accessibilityRole="button" accessibilityLabel={${quote(n.accessibilityLabel||n.label)}} onPress={()=>{${go}}} style={${style}}><Text>{${label}}</Text></Pressable>`;
