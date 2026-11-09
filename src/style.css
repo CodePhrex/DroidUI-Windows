@@ -77,3 +77,29 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .audit-findings{max-height:320px;overflow:auto;display:flex;flex-direction:column;gap:5px;margin:10px 0}
 .audit-findings button{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;white-space:normal;padding:9px;border:1px solid #344055;border-radius:7px}
 .audit-findings small{font-size:11px;line-height:1.4;color:#b9c6d8}
+
+/* Premium reactive workspace surfaces */
+:root{--dui-accent:#84b8ff;--dui-edge:#334158;--dui-surface:#192231}
+button,select,input{transition:background-color .16s ease,border-color .16s ease,box-shadow .16s ease,transform .16s ease}
+button:hover:not(:disabled){border-color:#6084b9}
+button:active:not(:disabled){transform:scale(.98)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--dui-accent);outline-offset:2px}
+header{background:linear-gradient(115deg,#1a2434,#151b26 75%);box-shadow:0 4px 24px #0003}
+.brand{letter-spacing:-.5px}
+.actions{overflow-x:auto;scrollbar-width:thin;max-width:calc(100vw - 250px);padding:4px}
+.actions button{flex-shrink:0;white-space:nowrap}
+.tools,.inspector{scrollbar-width:thin;scrollbar-color:#425777 transparent}
+.component-list button{background:linear-gradient(150deg,#273449,#1a2434);border-color:#3c4e69}
+.component-list button:hover{background:linear-gradient(150deg,#344e70,#263952)!important;transform:translateY(-2px);box-shadow:0 8px 22px #0005}
+.canvas{box-shadow:0 22px 65px #0009,0 0 0 1px #d9e5ff66}
+.element.icon{display:flex;align-items:center;justify-content:center;padding:4px;min-width:24px;min-height:24px}
+.icon-dialog{background:#161f2e;border:1px solid #486081;border-radius:18px;padding:24px;width:min(960px,96vw);max-height:88vh;overflow:auto;box-shadow:0 30px 90px #000a}
+.icon-dialog h2{margin:0;font-size:21px}
+.icon-dialog h2 small{font-size:12px;color:#9eb5d2;font-weight:500}
+.icon-dialog p{font-size:13px;color:#9eb5d2}
+.icon-dialog>input{display:block;width:100%;padding:12px 14px;margin:16px 0;background:#0d1521;color:#e9edf7;border:1px solid #465975;border-radius:10px}
+.icon-gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(94px,1fr));gap:10px;max-height:56vh;overflow:auto;padding:5px}
+.icon-gallery-grid button{min-height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#202d40;border:1px solid #354b66;border-radius:12px;color:#a8d0ff}
+.icon-gallery-grid button:hover{background:#2e4664!important;transform:translateY(-2px)}
+.icon-gallery-grid small{color:#dce7fa;font-size:11px;overflow-wrap:anywhere}
+@media(prefers-reduced-motion:reduce){button,select,input{transition:none!important}}
