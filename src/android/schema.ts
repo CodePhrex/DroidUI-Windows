@@ -1,4 +1,4 @@
-export type ComponentType = "Text" | "Button" | "Card" | "Rectangle" | "Frame" | "TextField" | "Switch" | "Checkbox" | "Icon";
+export type ComponentType = "Text" | "Button" | "Card" | "Rectangle" | "Frame" | "TextField" | "Switch" | "Checkbox" | "Icon" | "Audio" | "Video" | "WebView";
 export interface StudioNode {
   id: string;
   type: ComponentType;
@@ -18,6 +18,10 @@ export interface StudioNode {
   navigateTo?: string;
   visible?: boolean;
   locked?: boolean;
+  sourceUrl?:string;
+  autoplay?:boolean;
+  loop?:boolean;
+  transition?: "none" | "fade" | "slide" | "zoom";
   animation?: "none" | "fade" | "pulse" | "slide" | "spin";
   animationDurationMs?: number;
 }
@@ -28,7 +32,7 @@ export function isStudioDocument(value: unknown): value is StudioDocument {
   const obj = value as Record<string, unknown>;
   if (typeof obj.name !== "string" || !Array.isArray(obj.nodes)) return false;
   if(obj.canvasColor!==undefined && (typeof obj.canvasColor!=="string" || !/^#[0-9a-fA-F]{6}$/.test(obj.canvasColor)))return false;
-  const types: readonly string[] = ["Text","Button","Card","Rectangle","Frame","TextField","Switch","Checkbox","Icon"];
+  const types: readonly string[] = ["Text","Button","Card","Rectangle","Frame","TextField","Switch","Checkbox","Icon","Audio","Video","WebView"];
   const optionalNumber = (v:unknown) => v === undefined || (typeof v === "number" && Number.isFinite(v));
   return obj.nodes.every((n:unknown) => {
     if (!n || typeof n !== "object") return false;
@@ -39,6 +43,10 @@ export function isStudioDocument(value: unknown): value is StudioDocument {
       (node.accessibilityLabel===undefined || typeof node.accessibilityLabel==="string") &&
       (node.backgroundColor===undefined || (typeof node.backgroundColor==="string" && /^#[0-9a-fA-F]{6}$/.test(node.backgroundColor))) &&
       (node.textColor===undefined || (typeof node.textColor==="string" && /^#[0-9a-fA-F]{6}$/.test(node.textColor))) &&
+      (node.sourceUrl===undefined || (typeof node.sourceUrl==="string" && node.sourceUrl.length<=2048 && (node.sourceUrl==="" || /^https:\/\/[^\s]+$/i.test(node.sourceUrl)))) &&
+      (node.autoplay===undefined || typeof node.autoplay==="boolean") &&
+      (node.loop===undefined || typeof node.loop==="boolean") &&
+      (node.transition===undefined || ["none","fade","slide","zoom"].includes(String(node.transition))) &&
       (node.visible===undefined || typeof node.visible==="boolean") &&
       (node.locked===undefined || typeof node.locked==="boolean") &&
       (node.navigateTo===undefined || (typeof node.navigateTo==="string" && node.navigateTo.length<=80)) &&
