@@ -1,0 +1,17 @@
+{
+  "identifier": "default",
+  "description": "Project file open and save",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "dialog:allow-open",
+    "dialog:allow-save",
+    "fs:allow-read-text-file",
+    "fs:allow-write-text-file",
+    "fs:scope-home",
+    "fs:scope-document",
+    "fs:scope-download"
+  ]
+}
