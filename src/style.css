@@ -166,3 +166,18 @@ footer{background:#11172a;border-color:#343a5c;gap:15px}
 .property-layer-state label{display:flex;align-items:center;gap:5px;font-size:12px}
 .inspector fieldset{border:0;padding:0;margin:0;min-width:0}
 .inspector fieldset:disabled{opacity:.5}
+
+.canvas-color-control{display:inline-flex;align-items:center;gap:6px}
+.canvas-color-control input{width:30px;height:27px;padding:1px;cursor:pointer}
+.color-presets{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin:12px 0}
+.color-presets span{width:100%;font-size:12px;color:#bac7df}
+.color-presets button{width:26px;height:26px;padding:0;margin:0;border:2px solid #59617e;border-radius:7px;flex-shrink:0}
+.color-presets button:hover{outline:2px solid #b36aff}
+.device-preview-dialog{width:min(94vw,1080px);max-height:92vh;overflow:auto;background:#151c30;border:1px solid #7050b0;border-radius:16px;padding:20px;box-shadow:0 25px 90px #000a}
+.device-preview-dialog h2{margin:0;font-size:20px}
+.device-preview-dialog h2 small{font-size:12px;color:#b6c5e2}
+.preview-actions{display:flex;gap:10px;align-items:center}
+.preview-actions select{max-width:270px;padding:8px;background:#10182a;color:#e8ecff;border:1px solid #45527b;border-radius:8px}
+.device-preview-scroll{overflow:auto;max-height:70vh;padding:24px;display:flex;justify-content:safe center;background:radial-gradient(circle at center,#222d4b,#0d1323);border-radius:12px}
+.device-preview-screen{position:relative;flex-shrink:0;overflow:hidden;border:8px solid #050914;border-radius:28px;box-shadow:0 20px 50px #000a}
+.device-preview-screen .element{cursor:default}
