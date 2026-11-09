@@ -66,3 +66,8 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .splash-demo{min-height:420px;border-radius:20px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
 .splash-demo strong{font-size:60px}
 @media(max-width:650px){.splash-layout{grid-template-columns:1fr}}
+
+.template-picker{padding:8px 0 14px;border-bottom:1px solid #303a4a;margin-bottom:14px}
+.template-picker select{width:100%;background:#10141c;color:#f0f4ff;border:1px solid #354053;border-radius:7px;padding:9px}
+.template-picker p{color:#9aaec8;font-size:12px;line-height:1.45;margin:8px 0}
+.template-picker button{width:100%;margin:0}
