@@ -48,3 +48,45 @@ test("reject unsafe media URLs and invalid visual properties", () => {
 test("reject Android mobile manifests without a dedicated adapter", () => {
   assert.throws(() => decodeManifest({ format: "mobile-v30", version: 30 }), /Unsupported DroidUI format/);
 });
+
+test("single-screen manifests without screens remain compatible", () => {
+  const project = screen("Single", [node]);
+  const saved = JSON.parse(encodeManifest(project, defaultSplash));
+  delete saved.screens;
+  const restored = decodeManifest(saved);
+  assert.equal(restored.legacy, false);
+  assert.deepEqual(restored.screens, [project]);
+  assert.deepEqual(restored.project, project);
+});
+
+test("splash duration boundary values round-trip and invalid values are rejected", () => {
+  for (const durationMs of [500, 10000]) {
+    const splash = { ...defaultSplash, durationMs };
+    assert.equal(decodeManifest(JSON.parse(encodeManifest(screen("Splash"), splash))).splash.durationMs, durationMs);
+  }
+  for (const durationMs of [499, 10001, 1500.5, Number.NaN]) {
+    assert.throws(() => encodeManifest(screen("Splash"), { ...defaultSplash, durationMs }), /Invalid/);
+  }
+});
+
+test("reject malformed node coordinates, invalid color and unsupported media scheme", () => {
+  const invalidNodes = [
+    { ...node, x: Number.POSITIVE_INFINITY },
+    { ...node, canvasColor: "#xyz" , backgroundColor: "#xyz" },
+    { ...node, type: "Audio", sourceUrl: "file:///private/audio.mp3" },
+    { ...node, type: "Video", sourceUrl: "http://example.com/movie.mp4" },
+    { ...node, transitionDurationMs: 0 },
+  ];
+  for (const invalid of invalidNodes) {
+    assert.throws(() => encodeManifest(screen("Invalid", [invalid]), defaultSplash), /Invalid/);
+  }
+});
+
+test("enforce maximum 100 screens at save and load boundaries", () => {
+  const hundred = Array.from({ length: 100 }, (_, i) => screen("Screen " + i));
+  const valid = JSON.parse(encodeManifest(hundred[0], defaultSplash, hundred));
+  assert.equal(decodeManifest(valid).screens.length, 100);
+  const extra = screen("Screen 100");
+  assert.throws(() => encodeManifest(hundred[0], defaultSplash, [...hundred, extra]), /Invalid/);
+  assert.throws(() => decodeManifest({ ...valid, screens: [...hundred, extra] }), /screen collection/);
+});
