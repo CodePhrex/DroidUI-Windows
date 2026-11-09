@@ -19,6 +19,9 @@ const modifier = (node:StudioNode) => {
 function render(node:StudioNode, index:number):string {
   const m=modifier(node), label=kt(node.label);
   switch(node.type) {
+    case "Audio": return `Text(text = "Audio player: ${node.label.replace(/"/g,"")}", modifier = ${m}) // TODO: implement Media3 audio playback`;
+    case "Video": return `Text(text = "Video player: ${node.label.replace(/"/g,"")}", modifier = ${m}) // TODO: implement Media3 video playback`;
+    case "WebView": return `Text(text = "Web content: ${node.label.replace(/"/g,"")}", modifier = ${m}) // TODO: implement Android WebView with safe navigation policy`;
     case "Icon": return `Text(text = "✦", modifier = ${m}, fontSize = ${sp(node.fontSizeSp ?? 24)}) // TODO: replace with vector asset ${node.iconName ?? "sparkles"}`;
     case "Text": return `Text(text = ${label}, modifier = ${m}, fontSize = ${sp(node.fontSizeSp ?? 16)})`;
     case "Button": return `Button(onClick = { /* TODO: connect app action */ }, modifier = ${m}) { Text(${label}) }`;
