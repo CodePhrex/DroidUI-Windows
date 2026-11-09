@@ -16,6 +16,7 @@ on:
       - "src/**"
       - "src-tauri/**"
       - "package.json"
+      - "tests/**"
       - ".github/workflows/desktop-windows.yml"
 
 permissions:
