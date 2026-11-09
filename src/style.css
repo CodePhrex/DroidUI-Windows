@@ -71,3 +71,9 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .template-picker select{width:100%;background:#10141c;color:#f0f4ff;border:1px solid #354053;border-radius:7px;padding:9px}
 .template-picker p{color:#9aaec8;font-size:12px;line-height:1.45;margin:8px 0}
 .template-picker button{width:100%;margin:0}
+
+.adaptive-audit{padding:12px 0;border-top:1px solid #354053;border-bottom:1px solid #354053;margin:12px 0}
+.adaptive-audit p{font-size:12px;color:#aebbd0;line-height:1.45}
+.audit-findings{max-height:320px;overflow:auto;display:flex;flex-direction:column;gap:5px;margin:10px 0}
+.audit-findings button{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;white-space:normal;padding:9px;border:1px solid #344055;border-radius:7px}
+.audit-findings small{font-size:11px;line-height:1.4;color:#b9c6d8}
