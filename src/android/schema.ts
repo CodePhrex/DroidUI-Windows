@@ -16,6 +16,8 @@ export interface StudioNode {
   rotation?: number;
   iconName?: string;
   navigateTo?: string;
+  visible?: boolean;
+  locked?: boolean;
   animation?: "none" | "fade" | "pulse" | "slide" | "spin";
   animationDurationMs?: number;
 }
