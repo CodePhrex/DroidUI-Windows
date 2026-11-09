@@ -21,12 +21,13 @@ export interface StudioNode {
   animation?: "none" | "fade" | "pulse" | "slide" | "spin";
   animationDurationMs?: number;
 }
-export interface StudioDocument { name: string; nodes: StudioNode[] }
+export interface StudioDocument { name: string; nodes: StudioNode[]; canvasColor?:string }
 export const STUDIO_SCHEMA_VERSION = 1;
 export function isStudioDocument(value: unknown): value is StudioDocument {
   if (!value || typeof value !== "object") return false;
   const obj = value as Record<string, unknown>;
   if (typeof obj.name !== "string" || !Array.isArray(obj.nodes)) return false;
+  if(obj.canvasColor!==undefined && (typeof obj.canvasColor!=="string" || !/^#[0-9a-fA-F]{6}$/.test(obj.canvasColor)))return false;
   const types: readonly string[] = ["Text","Button","Card","Rectangle","Frame","TextField","Switch","Checkbox","Icon"];
   const optionalNumber = (v:unknown) => v === undefined || (typeof v === "number" && Number.isFinite(v));
   return obj.nodes.every((n:unknown) => {
