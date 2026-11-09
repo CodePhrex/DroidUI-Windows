@@ -8,6 +8,11 @@ export interface StudioNode {
   width?: number;
   height?: number;
   fontSizeSp?: number;
+  fontFamily?:string;
+  fontWeight?:number;
+  letterSpacing?:number;
+  textEffect?: "none" | "shadow" | "glow" | "outline" | "gradient";
+  transitionDurationMs?:number;
   accessibilityLabel?: string;
   backgroundColor?: string;
   textColor?: string;
@@ -39,6 +44,11 @@ export function isStudioDocument(value: unknown): value is StudioDocument {
     const node=n as Record<string,unknown>;
     return typeof node.id==="string" && types.includes(String(node.type)) && typeof node.label==="string" &&
       typeof node.x==="number" && Number.isFinite(node.x) && typeof node.y==="number" && Number.isFinite(node.y) &&
+      (node.fontFamily===undefined || (typeof node.fontFamily==="string" && node.fontFamily.length<=100)) &&
+      (node.fontWeight===undefined || (typeof node.fontWeight==="number" && node.fontWeight>=100 && node.fontWeight<=900)) &&
+      optionalNumber(node.letterSpacing) &&
+      (node.textEffect===undefined || ["none","shadow","glow","outline","gradient"].includes(String(node.textEffect))) &&
+      (node.transitionDurationMs===undefined || (typeof node.transitionDurationMs==="number" && node.transitionDurationMs>=100 && node.transitionDurationMs<=10000)) &&
       optionalNumber(node.width) && optionalNumber(node.height) && optionalNumber(node.fontSizeSp) &&
       (node.accessibilityLabel===undefined || typeof node.accessibilityLabel==="string") &&
       (node.backgroundColor===undefined || (typeof node.backgroundColor==="string" && /^#[0-9a-fA-F]{6}$/.test(node.backgroundColor))) &&
