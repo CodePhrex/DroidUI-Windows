@@ -14,6 +14,8 @@ export interface StudioNode {
   cornerRadius?: number;
   opacity?: number;
   rotation?: number;
+  animation?: "none" | "fade" | "pulse" | "slide" | "spin";
+  animationDurationMs?: number;
 }
 export interface StudioDocument { name: string; nodes: StudioNode[] }
 export const STUDIO_SCHEMA_VERSION = 1;
@@ -32,6 +34,8 @@ export function isStudioDocument(value: unknown): value is StudioDocument {
       (node.accessibilityLabel===undefined || typeof node.accessibilityLabel==="string") &&
       (node.backgroundColor===undefined || (typeof node.backgroundColor==="string" && /^#[0-9a-fA-F]{6}$/.test(node.backgroundColor))) &&
       (node.textColor===undefined || (typeof node.textColor==="string" && /^#[0-9a-fA-F]{6}$/.test(node.textColor))) &&
-      optionalNumber(node.cornerRadius) && optionalNumber(node.opacity) && optionalNumber(node.rotation);
+      optionalNumber(node.cornerRadius) && optionalNumber(node.opacity) && optionalNumber(node.rotation) &&
+      (node.animation===undefined || ["none","fade","pulse","slide","spin"].includes(String(node.animation))) &&
+      (node.animationDurationMs===undefined || (typeof node.animationDurationMs==="number" && Number.isInteger(node.animationDurationMs) && node.animationDurationMs>=100 && node.animationDurationMs<=10000));
   });
 }
