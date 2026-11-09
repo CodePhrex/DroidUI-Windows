@@ -15,6 +15,7 @@ export interface StudioNode {
   opacity?: number;
   rotation?: number;
   iconName?: string;
+  navigateTo?: string;
   animation?: "none" | "fade" | "pulse" | "slide" | "spin";
   animationDurationMs?: number;
 }
@@ -35,6 +36,7 @@ export function isStudioDocument(value: unknown): value is StudioDocument {
       (node.accessibilityLabel===undefined || typeof node.accessibilityLabel==="string") &&
       (node.backgroundColor===undefined || (typeof node.backgroundColor==="string" && /^#[0-9a-fA-F]{6}$/.test(node.backgroundColor))) &&
       (node.textColor===undefined || (typeof node.textColor==="string" && /^#[0-9a-fA-F]{6}$/.test(node.textColor))) &&
+      (node.navigateTo===undefined || (typeof node.navigateTo==="string" && node.navigateTo.length<=80)) &&
       (node.iconName===undefined || (typeof node.iconName==="string" && /^[a-zA-Z0-9]+$/.test(node.iconName))) &&
       optionalNumber(node.cornerRadius) && optionalNumber(node.opacity) && optionalNumber(node.rotation) &&
       (node.animation===undefined || ["none","fade","pulse","slide","spin"].includes(String(node.animation))) &&
