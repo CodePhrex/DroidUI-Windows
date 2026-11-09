@@ -7,6 +7,7 @@ on:
       - "src/**"
       - "src-tauri/**"
       - "package.json"
+      - "tests/**"
       - ".github/workflows/desktop-windows.yml"
   push:
     branches:
@@ -53,6 +54,8 @@ jobs:
           '@ | python -
       - name: Install desktop dependencies
         run: npm install --no-audit --no-fund
+      - name: Run manifest regression tests
+        run: npm test
       - name: Build desktop web frontend
         run: npm run build
       - name: Build Tauri Windows installer
